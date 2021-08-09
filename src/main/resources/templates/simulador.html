@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+    <tr align="center">
+        <td>Origem</td>
+        <td>Destino</td>
+        <td>Tempo (minutos)</td>
+        <td>Com [[${planoSugerido}]]</td>
+        <td>Sem Fale Mais</td>
+    </tr>
+    <tr align="center">
+        <td th:text="${DDDsource}">DDD source</td>
+        <td th:text="${DDDdestination}">DDD destination</td>
+        <td th:text="${minutes}">Minutes</td>
+        <td th:text="${custoPlanoSugerido}">Cost</td>
+        <td th:text="${custoPlanoBasico}">Cost</td>
+    </tr>
+</table>
+<br/>
+<a th:href="@{iniciarSimulador}">Nova simulação</a>
+
+</body>
+</html>

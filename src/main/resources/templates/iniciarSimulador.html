@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<form action="/planos/simular" method="get">
+<table>
+  <tr>
+    <td>Origem</td>
+    <td>Destino</td>
+    <td>Digite a duração (em minutos)</td>
+  </tr>
+  <tr>
+    <td><select name="DDDsource">
+      <option value="">Selecione DDD de origem</option>
+      <option th:each="DDD : ${sourceDDD}"
+              th:value="${DDD}"
+              th:text="${DDD}"></option>
+    </select></td>
+    <td><select name="DDDdestination">
+      <option value="">Selecione DDD de destino</option>
+      <option th:each="DDD : ${destinationDDD}"
+              th:value="${DDD}"
+              th:text="${DDD}"></option>
+    </select></td>
+    <td>
+      <input name="minutes"/>
+    </td>
+  </tr>
+</table>
+</form>
+</body>
+</html>
