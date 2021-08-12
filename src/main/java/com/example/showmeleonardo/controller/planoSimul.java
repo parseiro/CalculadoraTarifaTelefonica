@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
@@ -46,10 +49,14 @@ public class planoSimul {
                           @RequestParam(value = "DDDsource", required = true) DDD DDDsource,
                           @RequestParam(value = "DDDdestination", required = true) DDD DDDdestination,
                           @RequestParam(value = "minutes", required = true) BigDecimal minutes) {
-        model.addAttribute("minutes", minutes);
+        final Locale brazilLocale = new Locale("pt", "BR");
+        final NumberFormat currencyFomatter = NumberFormat.getCurrencyInstance(brazilLocale);
+        final NumberFormat numberFormatter = DecimalFormat.getNumberInstance();
+
+        model.addAttribute("minutes", numberFormatter.format(minutes));
         model.addAttribute("DDDsource", DDDsource);
         model.addAttribute("DDDdestination", DDDdestination);
-        model.addAttribute("custoPlanoBasico", planoBasico.precoDaChamada(DDDsource, DDDdestination, minutes).toPlainString());
+        model.addAttribute("custoPlanoBasico", currencyFomatter.format(planoBasico.precoDaChamada(DDDsource, DDDdestination, minutes)));
 
         PlanoDeChamadas planoSugerido;
         BigDecimal precoNoPlanoSugerido;
@@ -77,10 +84,8 @@ public class planoSimul {
         /*PlanoDeChamadas planoSugerido = new FaleMais30();
         if (BigDecimal.valueOf(45).compareTo(minutes) <= 0) planoSugerido = new FaleMais60();
         else if (BigDecimal.valueOf(90).compareTo(minutes) <= 0) planoSugerido = new FaleMais120();*/
-        model.addAttribute("planoSugerido", planoSugerido.getClass().
-
-                getSimpleName());
-        model.addAttribute("custoPlanoSugerido", precoNoPlanoSugerido.toPlainString());
+        model.addAttribute("planoSugerido", planoSugerido.getClass().getSimpleName());
+        model.addAttribute("custoPlanoSugerido", currencyFomatter.format(precoNoPlanoSugerido));
         return "simulador";
     }
 
