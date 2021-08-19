@@ -6,10 +6,10 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
 
-public class FaleMais extends PlanoDeChamadas {
+public class PacoteLigueSempre extends PlanoDeChamadas {
     private BigDecimal minutosDoPlano;
 
-    public FaleMais(BigDecimal minutosDoPlano) {
+    public PacoteLigueSempre(BigDecimal minutosDoPlano) {
         this.minutosDoPlano = minutosDoPlano;
     }
 

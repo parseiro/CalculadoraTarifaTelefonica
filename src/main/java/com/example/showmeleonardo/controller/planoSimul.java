@@ -24,13 +24,13 @@ public class planoSimul {
     PlanoBasico planoBasico;
 
     @Autowired
-    FaleMais30 faleMais30;
+    PacoteLigueSempre30 faleMais30;
 
     @Autowired
-    FaleMais60 faleMais60;
+    PacoteLigueSempre60 faleMais60;
 
     @Autowired
-    FaleMais120 faleMais120;
+    PacoteLigueSempre120 faleMais120;
 
     @GetMapping(value = "/greet", produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody
@@ -61,9 +61,9 @@ public class planoSimul {
         PlanoDeChamadas planoSugerido;
         BigDecimal precoNoPlanoSugerido;
         {
-            var precoNoFaleMais30 = new FaleMais30().precoDaChamada(DDDsource, DDDdestination, minutes);
-            var precoNoFaleMais60 = new FaleMais60().precoDaChamada(DDDsource, DDDdestination, minutes);
-            var precoNoFaleMais120 = new FaleMais120().precoDaChamada(DDDsource, DDDdestination, minutes);
+            var precoNoFaleMais30 = new PacoteLigueSempre30().precoDaChamada(DDDsource, DDDdestination, minutes);
+            var precoNoFaleMais60 = new PacoteLigueSempre60().precoDaChamada(DDDsource, DDDdestination, minutes);
+            var precoNoFaleMais120 = new PacoteLigueSempre120().precoDaChamada(DDDsource, DDDdestination, minutes);
 
             var precos = new TreeSet<BigDecimal>();
             precos.add(precoNoFaleMais30);
@@ -73,11 +73,11 @@ public class planoSimul {
             precoNoPlanoSugerido = precos.first();
 
             if (precoNoPlanoSugerido == precoNoFaleMais30) {
-                planoSugerido = new FaleMais30();
+                planoSugerido = new PacoteLigueSempre30();
             } else if (precoNoPlanoSugerido == precoNoFaleMais60) {
-                planoSugerido = new FaleMais60();
+                planoSugerido = new PacoteLigueSempre60();
             } else {
-                planoSugerido = new FaleMais120();
+                planoSugerido = new PacoteLigueSempre120();
             }
         }
 

@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 
 @Service
-public class FaleMais30 extends FaleMais {
-    public FaleMais30() {
-        super(BigDecimal.valueOf(30));
+public class PacoteLigueSempre60 extends PacoteLigueSempre {
+    public PacoteLigueSempre60() {
+        super(BigDecimal.valueOf(60));
     }
 }
