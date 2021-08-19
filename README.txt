@@ -1,9 +1,9 @@
-Este é um simulador de preço de ligações telefônicas, sem um plano de chamadas e com um plano de chamadas.
+Este é um simulador de preço de ligações telefônicas, ele compara o custo **sem** um plano de chamadas e **com** um plano de chamadas.
 
 Para ver o projeto online no Heroku: https://telefone-simulador.herokuapp.com/planos/iniciarSimulador
 
 Para executar o aplicativo localmente: mvnw.cmd spring-boot:run
-Acessar: http://localhost:8080/planos/iniciarSimulador
+Acessar: **http://localhost:8080/planos/iniciarSimulador**
 
 Os valores da tarifa básica são definidos no arquivo PrecosTarifaBasica.java
 A simulação só é possível fazer entre os DDDs cadastrados neste arquivo.
